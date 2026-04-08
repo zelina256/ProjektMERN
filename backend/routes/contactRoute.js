@@ -15,4 +15,16 @@ app.post("/addContact", async(req, res)=>{
     }
 })
 
+// ReadAll =>get
+app.get("/allContact", async(req, res)=>{
+    try{
+        const allContact = await contactModel.find({})
+        res.status(200).send(allContact)
+        console.log(allContact)
+    }catch(err){
+         res.status(500).send("Not read contacts: "+err)
+        console.log("Not read contacts: "+err)
+    }
+})
+
 module.exports=app
