@@ -6,6 +6,7 @@ const cors = require('cors')
 const session = require('express-session')
 
 const contactRoute = require("./routes/contactRoute")
+const itemRoute = require("./routes/itemRoute")
 // konfigurime
 app.use(cors(
 {
@@ -36,7 +37,7 @@ mongoose.connect('mongodb://localhost:27017/Project')
 // }
 // app.use("/", testFun)
 app.use(contactRoute)
-
+app.use(itemRoute)
 // Server
 app.listen(5000, ()=>{
     console.log("Server Created")
