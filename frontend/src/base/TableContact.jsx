@@ -8,7 +8,7 @@ const TableContact = () => {
             await axios.get("http://localhost:5000/allContact")
                 .then(res => setContacts(res.data))
                 .catch((err) => console.log("Not read contacts " + err))
-        }; contactsInfos()
+        }; contactsInfos ()
     }, [])
     return (
         <Container>

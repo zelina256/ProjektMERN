@@ -11,6 +11,8 @@ const NavigationBar = () => {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/contact/">Contact</Nav.Link>
              <Nav.Link href=" /table-contact/">Table Contact</Nav.Link>
+             <Nav.Link href=" /createItem/">Create Item</Nav.Link>
+             <Nav.Link href=" /readAllItem/">All Items</Nav.Link>
            
           </Nav>
         </Navbar.Collapse>
