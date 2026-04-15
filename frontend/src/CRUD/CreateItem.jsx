@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Container, Form, Button } from 'react-bootstrap'
+import { Container, Form, Button, Image} from 'react-bootstrap'
 import axios from "axios"
 import {useNavigate} from "react-router-dom"
 const CreateItem = () => {
@@ -10,11 +10,13 @@ const CreateItem = () => {
         photo: ""
 
     })
+    const [uploadedImage, setUploadedImage] = useState(null);
     const handleChange = (e)=>{
         setNewItem({...newItem, [e.target.name]:e.target.value})
     }
       const handlePhoto = (e)=>{
         setNewItem({...newItem, photo:e.target.files[0]})
+        setUploadedImage(URL.createObjectURL(e.target.files[0]));
     }
     const handleSubmit = async(e)=>{
         e.preventDefault()
@@ -45,6 +47,14 @@ const CreateItem = () => {
       </Form.Group>
       <Button type="Submit" variant="primary">Add Item</Button>
     </Form>
+    {uploadedImage && (
+<Image
+src={uploadedImage}
+alt='Uploaded'
+rounded
+className='img-fluid'
+/>
+)}
     </Container>
   )
 }
