@@ -4,7 +4,7 @@ const app = express()
 const mongoose = require('mongoose')
 const cors = require('cors')
 const session = require('express-session')
-
+const path = require("path")
 const contactRoute = require("./routes/contactRoute")
 const itemRoute = require("./routes/itemRoute")
 // konfigurime
@@ -21,7 +21,7 @@ saveUninitialized: true,
 cookie: {maxAge: 1000 * 60 * 60 * 24}
 }))
 app.use(express.json({ limit: "1000mb", extended: true }));
-
+app.use("/images", express.static(path.join(__dirname, "/images")));
 // MongoDB
 // mongoose.connect('mongodb+srv://admin:123@cluster0.bq08cij.mongodb.net/Project?appName=Cluster0')
 // .then(()=>console.log("DB Conneted"))
