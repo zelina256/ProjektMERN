@@ -27,8 +27,8 @@ const OneItem = () => {
         <Col>
           <h1>{infoItem.name}</h1>
           <p>{infoItem.description}</p>
-          <Button variant="danger" onClick={()=>handleDelete(infoItem._id)}>Delete</Button>
-          <Button variant="warning" href={"/updateItem/"+infoItem._id}>Update</Button>
+          {/* <Button variant="danger" onClick={()=>handleDelete(infoItem._id)}>Delete</Button>
+          <Button variant="warning" href={"/updateItem/"+infoItem._id}>Update</Button> */}
         </Col>
         <Col>
         <img src={"http://localhost:5000/images/"+infoItem.photo} className="img-fluid" alt={infoItem.description}/>

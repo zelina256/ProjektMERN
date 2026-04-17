@@ -25,9 +25,11 @@ let upload = multer({ storage, fileFilter })
 // Create
 app.post("/addItem", upload.single("photo") ,async (req, res) => {
     try {
+        const userId=req.body.userId 
         const newItem = new itemModel(
             {...req.body,
-                photo:req.file.filename
+                photo:req.file.filename,
+                userItem:userId 
             })
         await newItem.save()
         res.status(200).send(newItem)

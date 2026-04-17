@@ -7,6 +7,8 @@ const session = require('express-session')
 const path = require("path")
 const contactRoute = require("./routes/contactRoute")
 const itemRoute = require("./routes/itemRoute")
+const userRouter = require("./routes/userRouter") 
+require('dotenv').config()
 // konfigurime
 app.use(cors(
 {
@@ -26,7 +28,7 @@ app.use("/images", express.static(path.join(__dirname, "/images")));
 // mongoose.connect('mongodb+srv://admin:123@cluster0.bq08cij.mongodb.net/Project?appName=Cluster0')
 // .then(()=>console.log("DB Conneted"))
 // .catch((err)=>console.log("Error" + err))
-mongoose.connect('mongodb://localhost:27017/Project')
+mongoose.connect(process.env.DBMONGO)
 .then(()=>console.log("DB Conneted"))
 .catch((err)=>console.log("Error" + err))
 
@@ -38,6 +40,7 @@ mongoose.connect('mongodb://localhost:27017/Project')
 // app.use("/", testFun)
 app.use(contactRoute)
 app.use(itemRoute)
+app.use(userRouter)
 // Server
 app.listen(5000, ()=>{
     console.log("Server Created")

@@ -10,7 +10,10 @@ const itemSchema = new mongoose.Schema({
     photo: {
         type: String
     },
-
+ userItem:{ 
+    type:mongoose.Schema.Types.ObjectId, 
+    ref:"User" 
+  } 
 })
 
 const Item = mongoose.model("Item", itemSchema)
