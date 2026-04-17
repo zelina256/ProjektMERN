@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { Container, Form, Button, Image} from 'react-bootstrap'
 import axios from "axios"
 import {useNavigate} from "react-router-dom"
+import { UserContext } from "../Auth/UserContext";
 const CreateItem = () => {
     const nav = useNavigate()
     const [newItem, setNewItem] = useState({
@@ -10,6 +11,7 @@ const CreateItem = () => {
         photo: ""
 
     })
+    const { userInfo, setUserInfo } = useContext(UserContext);
     const [uploadedImage, setUploadedImage] = useState(null);
     const handleChange = (e)=>{
         setNewItem({...newItem, [e.target.name]:e.target.value})
@@ -24,7 +26,7 @@ const CreateItem = () => {
         Object.entries(newItem).forEach(([key, value])=>{
             formData.append(key, value)
         })
-
+        formData.append('userId', userInfo.id)
         await axios.post("http://localhost:5000/addItem",  formData)
         .then(res=>nav("/readAllItem/"))
         .catch(err=>console.log(err))
